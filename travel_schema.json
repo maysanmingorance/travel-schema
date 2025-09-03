@@ -46,7 +46,16 @@
             "ret_origin": { "type": "string" },
             "ret_destination": { "type": "string" },
             "ret_depart_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" },
-            "ret_arrive_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" }
+            "ret_arrive_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" },
+            "deeplink": { "type": "string", "pattern": "^https://.+$" },
+            "deeplinks": {
+              "type": "object",
+              "properties": {
+                "skyscanner": { "type": "string", "pattern": "^https://.+$" },
+                "google": { "type": "string", "pattern": "^https://.+$" }
+              },
+              "additionalProperties": false
+            }
           },
           "required": [
             "out_origin",
@@ -76,7 +85,8 @@
               "ret_origin": { "type": "string" },
               "ret_destination": { "type": "string" },
               "ret_depart_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" },
-              "ret_arrive_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" }
+              "ret_arrive_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" },
+              "deeplink": { "type": "string", "pattern": "^https://.+$" }
             },
             "required": [
               "out_origin",
@@ -175,7 +185,8 @@
               "additionalProperties": false
             },
             "duration_iso": { "type": "string" },
-            "distance_mi": { "type": ["number", "null"] }
+            "distance_mi": { "type": ["number", "null"] },
+            "deeplink": { "type": "string", "pattern": "^https://.+$" }
           },
           "required": ["type", "end_city", "end_country"],
           "additionalProperties": false
@@ -204,7 +215,8 @@
                 },
                 "required": ["amount", "currency"],
                 "additionalProperties": false
-              }
+              },
+              "deeplink": { "type": "string", "pattern": "^https://.+$" }
             },
             "required": ["id", "vehicle", "price"],
             "additionalProperties": false
