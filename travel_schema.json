@@ -245,25 +245,32 @@
       }
     },
 
-    "itinerary": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "object",
-        "properties": {
-          "day": { "type": "integer", "minimum": 1 },
-          "title": {
-            "type": "string",
-            "minLength": 1,
-            "pattern": "^(Day\\s+\\d+|Days\\s+\\d+\\s*[–-]\\s*\\d+)\\s*:\\s*.+"
+"itinerary": {
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "properties": {
+      "day": { "type": "integer", "minimum": 1 },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "allOf": [
+          {
+            "pattern": "^(?:Day\\s+\\d+|Days\\s+\\d+\\s*[–-]\\s*\\d+)\\s*:\\s*.+$"
           },
-          "activities": { "type": "string", "minLength": 1 },
-          "badge": { "type": "string" }
-        },
-        "required": ["day", "title", "activities"],
-        "additionalProperties": false
-      }
+          {
+            "not": { "pattern": "^Day\\s+\\d+\\s*:\\s*Days\\b" }
+          }
+        ]
+      },
+      "activities": { "type": "string", "minLength": 1 },
+      "badge": { "type": "string" }
     },
+    "required": ["day", "title", "activities"],
+    "additionalProperties": false
+  }
+},
 
     "local_tips": {
       "type": "array",
