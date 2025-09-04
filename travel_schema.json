@@ -257,10 +257,10 @@
         "minLength": 1,
         "allOf": [
           {
-            "pattern": "^(?:Day\\s+\\d+|Days\\s+\\d+\\s*[–-]\\s*\\d+)\\s*:\\s*.+$"
+            "pattern": "^(?:Day\\s+[1-9][0-9]*|Days\\s+[1-9][0-9]*\\s*[-\\u2013]\\s*[1-9][0-9]*)\\s*:\\s*.+$"
           },
           {
-            "not": { "pattern": "^Day\\s+\\d+\\s*:\\s*Days\\b" }
+            "not": { "pattern": "^Day\\s+[1-9][0-9]*\\s*:\\s*Days\\b" }
           }
         ]
       },
