@@ -1,33 +1,32 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Trip Context Schema (aligned)",
+  "title": "Travel Itinerary Schema",
   "type": "object",
   "properties": {
-    "meta": {
-      "type": "object",
-      "properties": {
-        "client_name": { "type": "string" },
-        "destination": { "type": "string", "minLength": 1 },
-        "start_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
-        "end_date":   { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
-        "date_range_human": { "type": "string" },
-        "nights": { "type": "integer", "minimum": 0 },
-        "travelers": {
-          "type": "object",
-          "properties": {
-            "adults":   { "type": "integer", "minimum": 0 },
-            "children": { "type": "integer", "minimum": 0 },
-            "infants":  { "type": "integer", "minimum": 0 }
-          },
-          "required": ["adults", "children", "infants"],
-          "additionalProperties": false
-        },
-        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
-        "cover_image_url": { "type": "string", "pattern": "^https://.+$" }
-      },
-      "required": ["destination", "start_date", "end_date", "travelers", "currency"],
-      "additionalProperties": false
-    },
+    "title": { "type": "string", "minLength": 1 },
+    "intro": { "type": "string", "minLength": 1 },
+    "overview": { "type": "string", "minLength": 1 },
+    "closing": { "type": "string", "minLength": 1 },
+
+    "destination": { "type": "string", "minLength": 1 },
+    "cover_image_url": { "type": "string", "pattern": "^https://.+$" },
+    "start_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "end_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "travelers": { "type": "integer", "minimum": 1 },
+
+    "client_name": { "type": "string" },
+    "preferences": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "logo_url": { "type": "string", "pattern": "^https://.+$" },
+    "qr_url": { "type": "string", "pattern": "^https://.+$" },
+    "concierge_email": { "type": "string", "format": "email", "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$" },
+    "concierge_phone": { "type": "string" },
+    "support_hours": { "type": "string" },
+    "start_date_display": { "type": "string" },
+    "end_date_display": { "type": "string" },
+
+    "accommodations": { "type": "string" },
+    "transport": { "type": "string" },
+    "dining": { "type": "string" },
 
     "flights": {
       "type": "object",
@@ -46,8 +45,8 @@
             "out_arrive_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" },
             "ret_origin": { "type": "string" },
             "ret_destination": { "type": "string" },
-            "ret_depart_at": { "type": "string", "pattern": "^(|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})$" },
-            "ret_arrive_at": { "type": "string", "pattern": "^(|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})$" },
+            "ret_depart_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" },
+            "ret_arrive_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" },
             "deeplink": { "type": "string", "pattern": "^https://.+$" },
             "deeplinks": {
               "type": "object",
@@ -58,7 +57,16 @@
               "additionalProperties": false
             }
           },
-          "required": ["out_origin","out_destination","out_depart_at","out_arrive_at"],
+          "required": [
+            "out_origin",
+            "out_destination",
+            "out_depart_at",
+            "out_arrive_at",
+            "ret_origin",
+            "ret_destination",
+            "ret_depart_at",
+            "ret_arrive_at"
+          ],
           "additionalProperties": false
         },
         "alternatives": {
@@ -76,21 +84,20 @@
               "out_arrive_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" },
               "ret_origin": { "type": "string" },
               "ret_destination": { "type": "string" },
-              "ret_depart_at": { "type": "string", "pattern": "^(|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})$" },
-              "ret_arrive_at": { "type": "string", "pattern": "^(|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})$" },
-              "deeplink": { "type": "string", "pattern": "^https://.+$" },
-
-              "total_duration": { "type": "string" },
-              "total_stops": { "type": "string" },
-              "carriers": { "type": "string" },
-              "cabins": { "type": "string" },
-              "cabin_best": { "type": "string" },
-              "seats_left": { "type": "string" },
-              "bags_qty": { "type": "string" },
-              "route_key": { "type": "string" },
-              "out_month_yyyy_mm": { "type": "string" }
+              "ret_depart_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" },
+              "ret_arrive_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$" },
+              "deeplink": { "type": "string", "pattern": "^https://.+$" }
             },
-            "required": ["id","label","currency","price_total","out_origin","out_destination","out_depart_at","out_arrive_at"],
+            "required": [
+              "out_origin",
+              "out_destination",
+              "out_depart_at",
+              "out_arrive_at",
+              "ret_origin",
+              "ret_destination",
+              "ret_depart_at",
+              "ret_arrive_at"
+            ],
             "additionalProperties": false
           }
         }
@@ -105,7 +112,7 @@
         "best": {
           "type": "object",
           "properties": {
-            "id": { "type": ["integer","string"] },
+            "id": { "type": ["integer", "string"] },
             "name": { "type": "string" },
             "stars": { "type": "integer", "minimum": 1, "maximum": 5 },
             "price_total": { "type": "string" },
@@ -113,14 +120,13 @@
             "currency": { "type": "string" },
             "location_name": { "type": "string" },
             "country": { "type": "string" },
-            "lat": { "type": ["number","null"] },
-            "lon": { "type": ["number","null"] },
+            "lat": { "type": "number" },
+            "lon": { "type": "number" },
             "deeplink": { "type": "string", "pattern": "^https://.+$" },
             "budget_band": { "type": "string" },
-            "within_budget": { "type": "boolean" },
-            "description": { "type": "string" }
+            "within_budget": { "type": "boolean" }
           },
-          "required": ["name","stars","currency"],
+          "required": ["name", "stars", "currency"],
           "additionalProperties": false
         },
         "shortlist": {
@@ -135,7 +141,7 @@
               "currency": { "type": "string" },
               "deeplink": { "type": "string", "pattern": "^https://.+$" }
             },
-            "required": ["name","stars","currency"],
+            "required": ["name", "stars", "currency"],
             "additionalProperties": false
           }
         }
@@ -162,8 +168,8 @@
               "properties": {
                 "code": { "type": "string" },
                 "desc": { "type": "string" },
-                "seats": { "type": ["integer","null"] },
-                "baggages": { "type": ["integer","null"] },
+                "seats": { "type": ["integer", "null"] },
+                "baggages": { "type": ["integer", "null"] },
                 "imageURL": { "type": "string", "pattern": "^https://.+$" }
               },
               "required": ["code"],
@@ -179,11 +185,10 @@
               "additionalProperties": false
             },
             "duration_iso": { "type": "string" },
-            "distance_mi": { "type": ["number","null"] },
-            "deeplink": { "type": "string", "pattern": "^https://.+$" },
-            "experience": { "type": "string" }
+            "distance_mi": { "type": ["number", "null"] },
+            "deeplink": { "type": "string", "pattern": "^https://.+$" }
           },
-          "required": ["type","end_city","end_country"],
+          "required": ["type", "end_city", "end_country"],
           "additionalProperties": false
         },
         "options": {
@@ -196,8 +201,8 @@
                 "type": "object",
                 "properties": {
                   "code": { "type": "string" },
-                  "seats": { "type": ["integer","null"] },
-                  "baggages": { "type": ["integer","null"] }
+                  "seats": { "type": ["integer", "null"] },
+                  "baggages": { "type": ["integer", "null"] }
                 },
                 "required": ["code"],
                 "additionalProperties": false
@@ -208,21 +213,18 @@
                   "amount": { "type": "string" },
                   "currency": { "type": "string" }
                 },
-                "required": ["amount","currency"],
+                "required": ["amount", "currency"],
                 "additionalProperties": false
               },
               "deeplink": { "type": "string", "pattern": "^https://.+$" }
             },
-            "required": ["id","vehicle","price"],
+            "required": ["id", "vehicle", "price"],
             "additionalProperties": false
           }
         },
-        "cover_images": {
-          "type": "array",
-          "items": { "type": "string", "pattern": "^https://.+$" }
-        }
+        "cover_images": { "type": "array", "items": { "type": "string", "pattern": "^https://.+$" } }
       },
-      "required": ["best","options","cover_images"],
+      "required": ["best", "options", "cover_images"],
       "additionalProperties": false
     },
 
@@ -233,55 +235,110 @@
         "properties": {
           "id": { "type": "string" },
           "name": { "type": "string" },
-          "description": { "type": "string" },
           "price_amount": { "type": "string" },
           "price_currency": { "type": "string" },
           "booking_link": { "type": "string", "pattern": "^https://.+$" },
           "image_url": { "type": "string", "pattern": "^https://.+$" }
         },
-        "required": ["id","name","price_amount","price_currency","booking_link","image_url"],
+        "required": ["id", "name", "price_amount", "price_currency", "booking_link", "image_url"],
         "additionalProperties": false
       }
     },
 
+"itinerary": {
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "properties": {
+      "day": { "type": "integer", "minimum": 1 },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "allOf": [
+          {
+            "pattern": "^(?:Day\\s+[1-9][0-9]*|Days\\s+[1-9][0-9]*\\s*[-\\u2013]\\s*[1-9][0-9]*)\\s*:\\s*.+$"
+          },
+          {
+            "not": { "pattern": "^Day\\s+[1-9][0-9]*\\s*:\\s*Days\\b" }
+          }
+        ]
+      },
+      "activities": { "type": "string", "minLength": 1 },
+      "badge": { "type": "string" }
+    },
+    "required": ["day", "title", "activities"],
+    "additionalProperties": false
+  }
+},
+
+    "local_tips": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 5,
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "packing_list": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 10,
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "concierge_service": { "type": "string", "minLength": 1 },
+
     "emergency_info": {
       "type": "object",
       "properties": {
-        "emergency_numbers": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "emergency_numbers": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
         "nearest_hospital": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "address": { "type": "string" },
-            "phone": { "type": "string" }
+            "name": { "type": "string", "minLength": 1 },
+            "address": { "type": "string", "minLength": 1 },
+            "phone": { "type": "string", "minLength": 1 }
           },
-          "required": ["name","address","phone"],
+          "required": ["name", "address", "phone"],
           "additionalProperties": false
         },
         "embassy_contact": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "address": { "type": "string" },
-            "phone": { "type": "string" }
+            "name": { "type": "string", "minLength": 1 },
+            "address": { "type": "string", "minLength": 1 },
+            "phone": { "type": "string", "minLength": 1 }
           },
-          "required": ["name","address","phone"],
+          "required": ["name", "address", "phone"],
           "additionalProperties": false
         }
       },
-      "additionalProperties": false
-    },
-
-    "pricing_hint": {
-      "type": "object",
-      "properties": {
-        "notes": { "type": "string" },
-        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
-      },
-      "required": ["notes","currency"],
+      "required": ["emergency_numbers", "nearest_hospital", "embassy_contact"],
       "additionalProperties": false
     }
   },
-  "required": ["meta","flights","hotel","transfer","activities"],
+  "required": [
+    "title",
+    "intro",
+    "overview",
+    "closing",
+    "destination",
+    "start_date",
+    "end_date",
+    "travelers",
+    "itinerary",
+    "local_tips",
+    "packing_list",
+    "concierge_service",
+    "emergency_info",
+    "flights",
+    "hotel",
+    "transfer",
+    "activities"
+  ],
   "additionalProperties": false
 }
