@@ -318,3 +318,25 @@
   "required": ["emergency_numbers", "nearest_hospital", "embassy_contact"],
   "additionalProperties": false
 }
+},
+“required”: [
+“title”,
+“intro”,
+“overview”,
+“closing”,
+“destination”,
+“start_date”,
+“end_date”,
+“travelers”,
+“itinerary”,
+“local_tips”,
+“packing_list”,
+“concierge_service”,
+“emergency_info”,
+“flights”,
+“hotel”,
+“transfer”,
+“activities”
+],
+“additionalProperties”: false
+}
