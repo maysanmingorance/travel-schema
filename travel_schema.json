@@ -319,7 +319,7 @@
   "additionalProperties": false
 }
 },
-“required”: [
+"required": [
 “title”,
 “intro”,
 “overview”,
