@@ -330,23 +330,23 @@
 }
 },
 "required": [
-“title”,
-“intro”,
-“overview”,
-“closing”,
-“destination”,
-“start_date”,
-“end_date”,
-“travelers”,
-“itinerary”,
-“local_tips”,
-“packing_list”,
-“concierge_service”,
-“emergency_info”,
-“flights”,
-“hotel”,
-“transfer”,
-“activities”
+"title",
+"intro",
+"overview",
+"closing",
+"destination",
+"start_date",
+"end_date",
+"travelers",
+"itinerary",
+"local_tips",
+"packing_list",
+"concierge_service",
+"emergency_info",
+"flights",
+"hotel",
+"transfer",
+"activities"
 ],
-“additionalProperties”: false
+"additionalProperties": false
 }
