@@ -291,7 +291,7 @@
     "concierge_email": { "type": "string", "format": "email" },
     "concierge_phone": { "type": "string" },
     "support_hours": { "type": "string" },
-    "hide_concierge": { "type": "boolean", "default": false },
+    "hide_concierge": { "type": "boolean", "default": true },
 
     "emergency_info": {
       "type": "object",
