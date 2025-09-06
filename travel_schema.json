@@ -16,11 +16,11 @@
 
     "client_name": { "type": "string" },
     "preferences": { "type": "array", "items": { "type": "string", "minLength": 1 } },
-    "logo_url": { "type": "string", "pattern": "^https://.+$" },
+
+    "company_logo_url": { "type": "string", "pattern": "^https://.+$" },   // NUEVO
+    "logo_url": { "type": "string", "pattern": "^https://.+$" },          // opcional / deprecated
     "qr_url": { "type": "string", "pattern": "^https://.+$" },
-    "concierge_email": { "type": "string", "format": "email" },
-    "concierge_phone": { "type": "string" },
-    "support_hours": { "type": "string" },
+
     "start_date_display": { "type": "string" },
     "end_date_display": { "type": "string" },
 
@@ -279,6 +279,10 @@
     },
 
     "concierge_service": { "type": "string", "minLength": 1 },
+    "concierge_email": { "type": "string", "format": "email" },
+    "concierge_phone": { "type": "string" },
+    "support_hours": { "type": "string" },
+    "hide_concierge": { "type": "boolean", "default": false },            // NUEVO
 
     "emergency_info": {
       "type": "object",
