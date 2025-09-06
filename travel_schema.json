@@ -7,27 +7,21 @@
     "intro": { "type": "string", "minLength": 1 },
     "overview": { "type": "string", "minLength": 1 },
     "closing": { "type": "string", "minLength": 1 },
-
     "destination": { "type": "string", "minLength": 1 },
     "cover_image_url": { "type": "string", "pattern": "^https://.+$" },
     "start_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
     "end_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
     "travelers": { "type": "integer", "minimum": 1 },
-
     "client_name": { "type": "string" },
     "preferences": { "type": "array", "items": { "type": "string", "minLength": 1 } },
-
     "company_logo_url": { "type": "string", "pattern": "^https://.+$" },
     "logo_url": { "type": "string", "pattern": "^https://.+$" },
     "qr_url": { "type": "string", "pattern": "^https://.+$" },
-
     "start_date_display": { "type": "string" },
     "end_date_display": { "type": "string" },
-
     "accommodations": { "type": "string" },
     "transport": { "type": "string" },
     "dining": { "type": "string" },
-
     "flights": {
       "type": "object",
       "properties": {
@@ -58,8 +52,14 @@
             }
           },
           "required": [
-            "out_origin","out_destination","out_depart_at","out_arrive_at",
-            "ret_origin","ret_destination","ret_depart_at","ret_arrive_at"
+            "out_origin",
+            "out_destination",
+            "out_depart_at",
+            "out_arrive_at",
+            "ret_origin",
+            "ret_destination",
+            "ret_depart_at",
+            "ret_arrive_at"
           ],
           "additionalProperties": false
         },
@@ -92,8 +92,14 @@
               "out_month_yyyy_mm": { "type": "string" }
             },
             "required": [
-              "id","label","currency","price_total",
-              "out_origin","out_destination","out_depart_at","out_arrive_at"
+              "id",
+              "label",
+              "currency",
+              "price_total",
+              "out_origin",
+              "out_destination",
+              "out_depart_at",
+              "out_arrive_at"
             ],
             "additionalProperties": false
           }
@@ -102,7 +108,6 @@
       "required": ["best"],
       "additionalProperties": false
     },
-
     "hotel": {
       "type": "object",
       "properties": {
@@ -117,13 +122,13 @@
             "currency": { "type": "string" },
             "location_name": { "type": "string" },
             "country": { "type": "string" },
-            "lat": { "type": ["number","null"] },
-            "lon": { "type": ["number","null"] },
+            "lat": { "type": ["number", "null"] },
+            "lon": { "type": ["number", "null"] },
             "deeplink": { "type": "string", "pattern": "^https://.+$" },
             "budget_band": { "type": "string" },
             "within_budget": { "type": "boolean" }
           },
-          "required": ["name","stars","currency"],
+          "required": ["name", "stars", "currency"],
           "additionalProperties": false
         },
         "shortlist": {
@@ -138,7 +143,7 @@
               "currency": { "type": "string" },
               "deeplink": { "type": "string", "pattern": "^https://.+$" }
             },
-            "required": ["name","stars","currency"],
+            "required": ["name", "stars", "currency"],
             "additionalProperties": false
           }
         }
@@ -146,7 +151,6 @@
       "required": ["best"],
       "additionalProperties": false
     },
-
     "transfer": {
       "type": "object",
       "properties": {
@@ -165,8 +169,8 @@
               "properties": {
                 "code": { "type": "string" },
                 "desc": { "type": "string" },
-                "seats": { "type": ["integer","null"] },
-                "baggages": { "type": ["integer","null"] },
+                "seats": { "type": ["integer", "null"] },
+                "baggages": { "type": ["integer", "null"] },
                 "imageURL": { "type": "string", "pattern": "^https://.+$" }
               },
               "required": ["code"],
@@ -182,11 +186,11 @@
               "additionalProperties": false
             },
             "duration_iso": { "type": "string" },
-            "distance_mi": { "type": ["number","null"] },
+            "distance_mi": { "type": ["number", "null"] },
             "deeplink": { "type": "string", "pattern": "^https://.+$" },
             "experience": { "type": "string" }
           },
-          "required": ["type","end_city","end_country"],
+          "required": ["type", "end_city", "end_country"],
           "additionalProperties": false
         },
         "options": {
@@ -199,8 +203,8 @@
                 "type": "object",
                 "properties": {
                   "code": { "type": "string" },
-                  "seats": { "type": ["integer","null"] },
-                  "baggages": { "type": ["integer","null"] }
+                  "seats": { "type": ["integer", "null"] },
+                  "baggages": { "type": ["integer", "null"] }
                 },
                 "required": ["code"],
                 "additionalProperties": false
@@ -211,21 +215,20 @@
                   "amount": { "type": "string" },
                   "currency": { "type": "string" }
                 },
-                "required": ["amount","currency"],
+                "required": ["amount", "currency"],
                 "additionalProperties": false
               },
               "deeplink": { "type": "string", "pattern": "^https://.+$" }
             },
-            "required": ["id","vehicle","price"],
+            "required": ["id", "vehicle", "price"],
             "additionalProperties": false
           }
         },
         "cover_images": { "type": "array", "items": { "type": "string", "pattern": "^https://.+$" } }
       },
-      "required": ["best","options","cover_images"],
+      "required": ["best", "options", "cover_images"],
       "additionalProperties": false
     },
-
     "activities": {
       "type": "array",
       "items": {
@@ -239,11 +242,10 @@
           "booking_link": { "type": "string", "pattern": "^https://.+$" },
           "image_url": { "type": "string", "pattern": "^https://.+$" }
         },
-        "required": ["id","name","price_amount","price_currency","booking_link","image_url"],
+        "required": ["id", "name", "price_amount", "price_currency", "booking_link", "image_url"],
         "additionalProperties": false
       }
     },
-
     "itinerary": {
       "type": "array",
       "minItems": 1,
@@ -259,31 +261,27 @@
           "activities": { "type": "string", "minLength": 1 },
           "badge": { "type": "string" }
         },
-        "required": ["day","title","activities"],
+        "required": ["day", "title", "activities"],
         "additionalProperties": false
       }
     },
-
     "local_tips": {
       "type": "array",
       "minItems": 4,
       "maxItems": 5,
       "items": { "type": "string", "minLength": 1 }
     },
-
     "packing_list": {
       "type": "array",
       "minItems": 8,
       "maxItems": 10,
       "items": { "type": "string", "minLength": 1 }
     },
-
     "concierge_service": { "type": "string", "minLength": 1 },
     "concierge_email": { "type": "string", "format": "email" },
     "concierge_phone": { "type": "string" },
     "support_hours": { "type": "string" },
     "hide_concierge": { "type": "boolean", "default": false },
-
     "emergency_info": {
       "type": "object",
       "properties": {
@@ -299,7 +297,7 @@
             "address": { "type": "string", "minLength": 1 },
             "phone": { "type": "string", "minLength": 1 }
           },
-          "required": ["name","address","phone"],
+          "required": ["name", "address", "phone"],
           "additionalProperties": false
         },
         "embassy_contact": {
@@ -309,19 +307,32 @@
             "address": { "type": "string", "minLength": 1 },
             "phone": { "type": "string", "minLength": 1 }
           },
-          "required": ["name","address","phone"],
+          "required": ["name", "address", "phone"],
           "additionalProperties": false
         }
       },
-      "required": ["emergency_numbers","nearest_hospital","embassy_contact"],
+      "required": ["emergency_numbers", "nearest_hospital", "embassy_contact"],
       "additionalProperties": false
     }
   },
   "required": [
-    "title","intro","overview","closing",
-    "destination","start_date","end_date","travelers",
-    "itinerary","local_tips","packing_list","concierge_service",
-    "emergency_info","flights","hotel","transfer","activities"
+    "title",
+    "intro",
+    "overview",
+    "closing",
+    "destination",
+    "start_date",
+    "end_date",
+    "travelers",
+    "itinerary",
+    "local_tips",
+    "packing_list",
+    "concierge_service",
+    "emergency_info",
+    "flights",
+    "hotel",
+    "transfer",
+    "activities"
   ],
   "additionalProperties": false
 }
