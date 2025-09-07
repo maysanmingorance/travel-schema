@@ -7,24 +7,21 @@
     "intro": { "type": "string", "minLength": 1 },
     "overview": { "type": "string", "minLength": 1 },
     "closing": { "type": "string", "minLength": 1 },
-
     "destination": { "type": "string", "minLength": 1 },
     "cover_image_url": { "type": "string", "pattern": "^https://.+$" },
     "start_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
     "end_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
     "travelers": { "type": "integer", "minimum": 1 },
-
     "client_name": { "type": "string" },
     "preferences": { "type": "array", "items": { "type": "string", "minLength": 1 } },
-
+    "company_logo_url": { "type": "string", "pattern": "^https://.+$" },
+    "logo_url": { "type": "string", "pattern": "^https://.+$" },
     "qr_url": { "type": "string", "pattern": "^https://.+$" },
     "start_date_display": { "type": "string" },
     "end_date_display": { "type": "string" },
-
     "accommodations": { "type": "string" },
     "transport": { "type": "string" },
     "dining": { "type": "string" },
-
     "flights": {
       "type": "object",
       "properties": {
@@ -111,7 +108,6 @@
       "required": ["best"],
       "additionalProperties": false
     },
-
     "hotel": {
       "type": "object",
       "properties": {
@@ -155,7 +151,6 @@
       "required": ["best"],
       "additionalProperties": false
     },
-
     "transfer": {
       "type": "object",
       "properties": {
@@ -231,10 +226,9 @@
         },
         "cover_images": { "type": "array", "items": { "type": "string", "pattern": "^https://.+$" } }
       },
-      "required": ["best", "options", "cover_images"],
+      "required": ["best"],
       "additionalProperties": false
     },
-
     "activities": {
       "type": "array",
       "items": {
@@ -252,7 +246,6 @@
         "additionalProperties": false
       }
     },
-
     "itinerary": {
       "type": "array",
       "minItems": 1,
@@ -272,27 +265,23 @@
         "additionalProperties": false
       }
     },
-
     "local_tips": {
       "type": "array",
       "minItems": 4,
       "maxItems": 5,
       "items": { "type": "string", "minLength": 1 }
     },
-
     "packing_list": {
       "type": "array",
       "minItems": 8,
       "maxItems": 10,
       "items": { "type": "string", "minLength": 1 }
     },
-
     "concierge_service": { "type": "string", "minLength": 1 },
     "concierge_email": { "type": "string", "format": "email" },
     "concierge_phone": { "type": "string" },
     "support_hours": { "type": "string" },
-    "hide_concierge": { "type": "boolean", "default": true },
-
+    "hide_concierge": { "type": "boolean", "default": false },
     "emergency_info": {
       "type": "object",
       "properties": {
@@ -326,19 +315,6 @@
       "additionalProperties": false
     }
   },
-
-  "allOf": [
-    {
-      "if": {
-        "properties": { "hide_concierge": { "const": true } }
-      },
-      "then": {},
-      "else": {
-        "required": ["concierge_service"]
-      }
-    }
-  ],
-
   "required": [
     "title",
     "intro",
@@ -351,12 +327,12 @@
     "itinerary",
     "local_tips",
     "packing_list",
+    "concierge_service",
     "emergency_info",
     "flights",
     "hotel",
     "transfer",
     "activities"
   ],
-
   "additionalProperties": false
 }
