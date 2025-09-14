@@ -9,6 +9,7 @@
     "closing": { "type": "string", "minLength": 1 },
     "destination": { "type": "string", "minLength": 1 },
     "cover_image_url": { "type": "string", "pattern": "^https://.+$" },
+    "top_1_image_url": { "type": "string", "pattern": "^https://.+$" },
     "start_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
     "end_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
     "travelers": { "type": "integer", "minimum": 1 },
@@ -49,7 +50,9 @@
                 "google": { "type": "string", "pattern": "^https://.+$" }
               },
               "additionalProperties": false
-            }
+            },
+            "cabin_best": { "type": "string" },
+            "cabins": { "type": "string" }
           },
           "required": [
             "out_origin",
@@ -126,7 +129,8 @@
             "lon": { "type": ["number", "null"] },
             "deeplink": { "type": "string", "pattern": "^https://.+$" },
             "budget_band": { "type": "string" },
-            "within_budget": { "type": "boolean" }
+            "within_budget": { "type": "boolean" },
+            "image_url": { "type": "string", "pattern": "^https://.+$" }
           },
           "required": ["name", "stars", "currency"],
           "additionalProperties": false
